@@ -1,7 +1,8 @@
 #!/bin/bash -x
 
 # 前回実行からstatusを採る
-[ $? = "0" ] && STATUS="success" || STATUS="failure"
+BEFORE_RESULT=$?
+[ $BEFORE_RESULT = "0" ] && STATUS="success" || STATUS="failure"
 TITLE=$1
 
 if [ ! ${CI} ]; then
@@ -16,3 +17,4 @@ curl ${BASE_URL} \
   -X POST \
   -d "{\"state\": \"${STATUS}\", \"context\": \"${TITLE}\" }"
 
+exit $BEFORE_RESULT
