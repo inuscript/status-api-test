@@ -1,1 +1,1 @@
-var hoge = "fuga"
+var hoge = "fuga";

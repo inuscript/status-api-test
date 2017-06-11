@@ -1,4 +1,5 @@
+#! /bin/bash
 
-https://
+[!$CI] && echo "exit" && exit;
 
-/repos/:owner/:repo/statuses/:sha
+URL=https://api.github.com/repos/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/statuses/$CIRCLE_SHA1
