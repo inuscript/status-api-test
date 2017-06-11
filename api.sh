@@ -10,7 +10,7 @@ if [ ! ${CI} ]; then
 fi
 
 BASE_URL=https://api.github.com
-URL=${BASE_URL}/repos/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/statuses/${CIRCLE_SHA1}
+URL=${BASE_URL}/repos/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/statuses/${CIRCLE_SHA1}?access_token=${GITHUB_TOKEN}
 
 curl ${URL} \
   -H "Content-Type: application/json" \
