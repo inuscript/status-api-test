@@ -1,9 +1,10 @@
 #!/bin/bash -x
 
 # 前回実行からstatusを採る
-BEFORE_RESULT=$?
-[ $BEFORE_RESULT = "0" ] && STATUS="success" || STATUS="failure"
 TITLE=$1
+BEFORE_RESULT=$2
+
+[ $BEFORE_RESULT = "0" ] && STATUS="success" || STATUS="failure"
 
 if [ ! ${CI} ]; then
   exit
