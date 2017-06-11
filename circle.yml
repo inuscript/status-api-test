@@ -1,3 +1,6 @@
-
+machine:
+  node:
+    version: 8
 test:
-  - npm run lint; ./api.sh lint;
+  override:
+    - npm run lint; ./api.sh lint;
