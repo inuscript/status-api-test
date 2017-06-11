@@ -3,5 +3,5 @@ machine:
     version: 8
 test:
   override:
-    - npm run lint ; ./api.sh lint $?
-    - npm run test:unit ; ./api.sh test:unit $?;
+    - npm run lint ; ./api.sh eslint $?
+    - npm run test:unit ; ./api.sh mocha $?;
