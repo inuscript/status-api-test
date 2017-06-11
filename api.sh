@@ -12,7 +12,7 @@ fi
 BASE_URL=https://api.github.com
 URL=${BASE_URL}/repos/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/statuses/${CIRCLE_SHA1}
 
-curl ${BASE_URL} \
+curl ${URL} \
   -H "Content-Type: application/json" \
   -X POST \
   -d "{\"state\": \"${STATUS}\", \"context\": \"${TITLE}\" }"
