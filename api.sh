@@ -1,6 +1,5 @@
 #!/bin/bash -x
 
-# 前回実行からstatusを採る
 TITLE=$1
 BEFORE_RESULT=$2
 
