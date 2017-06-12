@@ -1,15 +1,20 @@
 #!/bin/bash -x
 
-# 前回実行からstatusを採る
-[ $? = "0" ] && RESULT="success" || RESULT="failure"
+TITLE=$1
+BEFORE_RESULT=$2
 
-post(){
-  if [ ! ${CI} ]; then
-    exit
-  fi
+[ $BEFORE_RESULT = "0" ] && STATUS="success" || STATUS="failure"
 
-  BASE_URL=https://api.github.com
-  URL=${BASE_URL}/repos/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/statuses/${CIRCLE_SHA1}
-}
+if [ ! ${CI} ]; then
+  exit
+fi
 
-post(RESULT)
+BASE_URL=https://api.github.com
+URL=${BASE_URL}/repos/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/statuses/${CIRCLE_SHA1}?access_token=${GITHUB_TOKEN}
+
+curl ${URL} \
+  -H "Content-Type: application/json" \
+  -X POST \
+  -d "{\"state\": \"${STATUS}\", \"context\": \"${TITLE}\" }"
+
+exit $BEFORE_RESULT
